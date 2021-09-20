@@ -35,4 +35,13 @@ router.put('/:id', (req, res, next) => {
         .catch(next)
 })
 
+router.delete('/:id', (req, res, next) => {
+    const { id } = req.params
+    Users.deleteUser(id)
+        .then(user => {
+            res.json(user)
+        })
+        .catch(next)
+})
+
 module.exports = router
