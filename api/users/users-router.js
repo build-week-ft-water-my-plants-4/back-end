@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const Users = require('./users-model')
 
+const { checkId, checkBody } = require('./users-middleware')
+
 router.get('/', (req, res, next) => {
     Users.getUsers()
         .then(users => {
@@ -9,7 +11,7 @@ router.get('/', (req, res, next) => {
         .catch(next)
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', checkId, (req, res, next) => {
     const { id } = req.params
     Users.findUserById(id)
         .then(user => {
@@ -18,7 +20,7 @@ router.get('/:id', (req, res, next) => {
         .catch(next)
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', checkBody, (req, res, next) => {
     Users.addUser(req.body)
         .then(user => {
             res.status(201).json(user)
@@ -26,7 +28,7 @@ router.post('/', (req, res, next) => {
         .catch(next)
 })
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', checkId, checkBody, (req, res, next) => {
     const { id } = req.params
     Users.editUser(id, req.body)
         .then(user => {
@@ -35,7 +37,7 @@ router.put('/:id', (req, res, next) => {
         .catch(next)
 })
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', checkId, (req, res, next) => {
     const { id } = req.params
     Users.deleteUser(id)
         .then(user => {
