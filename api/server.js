@@ -4,11 +4,13 @@ const cors = require('cors')
 const server = express()
 
 const usersRouter = require('./users/users-router')
+const authRouter = require('./auth/auth-router')
 
 server.use(express.json())
 server.use(cors())
 
 server.use('/api/users', usersRouter)
+server.use('/auth', authRouter)
 
 server.get('/api', (req, res) => {
     res.json(`Welcome to the GARDEN OF EDEN server!`)
