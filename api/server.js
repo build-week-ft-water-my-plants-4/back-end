@@ -3,8 +3,12 @@ const cors = require('cors')
 
 const server = express()
 
+const usersRouter = require('./users/users-router')
+
 server.use(express.json())
 server.use(cors())
+
+server.use('/api/users', usersRouter)
 
 server.get('/api', (req, res) => {
     res.json(`Welcome to the GARDEN OF EDEN server!`)
