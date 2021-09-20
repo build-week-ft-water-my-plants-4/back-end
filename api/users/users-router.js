@@ -26,4 +26,13 @@ router.post('/', (req, res, next) => {
         .catch(next)
 })
 
+router.put('/:id', (req, res, next) => {
+    const { id } = req.params
+    Users.editUser(id, req.body)
+        .then(user => {
+            res.status(200).json(user)
+        })
+        .catch(next)
+})
+
 module.exports = router
