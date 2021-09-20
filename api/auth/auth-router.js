@@ -13,4 +13,17 @@ router.post('/register', (req, res, next) => {
         .catch(next)
 })
 
+router.post('/login', (req, res, next) => {
+    if(bcrypt.compareSync(req.body.password, req.user.password)){
+        const token = tokenBuilder(req.user)
+        res.json({
+            message: `Welcome, ${req.user.username}`,
+            user_id: req.user.user_id,
+            token
+        })
+    } else {
+        next({ status: 401, message: 'invalid credentials' })
+    }
+})
+
 module.exports = router
