@@ -24,10 +24,10 @@ Logging in will grant a token!
 [GET] /api/users/:id - gets the user of the specified id
 
 [POST] /api/users - creates a new user
-DO NOT USE THIS ENDPOINT, USE [POST] /auth/register INSTEAD!
+DO NOT USE THIS ENDPOINT, USE [POST] /auth/register INSTEAD! PASSWORDS DO NOT ENCRYPT THROUGH THIS ENDPOINT
 
 [PUT] /api/users/:id - updates the user of the specified id
-(WORK IN PROGRESS) DO NOT USE THIS ENDPOINT YET, I forgot to make the updated password encrypt, so this will probably break the user and they will not be able to log in
+Password now encrypts properly!
 
 [DELETE] /api/users/:id - deletes the user of the specified id
 Safe to use. Does not reopen the id. The id of newly created users will skip the id numbers of deleted users.
