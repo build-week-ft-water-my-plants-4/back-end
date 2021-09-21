@@ -17,6 +17,19 @@ const validateUniqueUser = async (req, res, next) => {
 }
 
 const checkBody = (req, res, next) => {
+    const { username, password } = req.body
+    const valid = Boolean(username && password)
+    if (valid) {
+        next()
+    } else {
+        next({
+            status: 422,
+            message: 'username and password required'
+        })
+    }
+}
+
+const checkBodyPhoneNumber = (req, res, next) => {
     const { username, password, phone_number } = req.body
     const valid = Boolean(username && password && phone_number)
     if (valid) {
@@ -65,6 +78,7 @@ const restricted = (req, res, next) => {
 module.exports = {
     validateUniqueUser,
     checkBody,
+    checkBodyPhoneNumber,
     checkUsernameExists,
     restricted
 }

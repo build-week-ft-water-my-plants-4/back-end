@@ -5,11 +5,12 @@ const tokenBuilder = require('./token-builder')
 
 const {
     checkBody,
+    checkBodyPhoneNumber,
     validateUniqueUser,
     checkUsernameExists
 } = require('./auth-middleware')
 
-router.post('/register', checkBody, validateUniqueUser, (req, res, next) => {
+router.post('/register', checkBodyPhoneNumber, validateUniqueUser, (req, res, next) => {
     const { username, password, phone_number } = req.body
     const hash = bcrypt.hashSync(password, 8)
     Auth.addUser({ username, password: hash, phone_number })
