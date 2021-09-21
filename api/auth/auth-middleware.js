@@ -1,6 +1,6 @@
 const Auth = require('./auth-model')
-const { verify } = require('jsonwebtoken')
-const { JWT_SECRET } = require('../../config/secrets')
+// const { verify } = require('jsonwebtoken')
+// const { JWT_SECRET } = require('../../config/secrets')
 
 const validateUniqueUser = async (req, res, next) => {
     try {
@@ -57,28 +57,27 @@ const checkUsernameExists = async (req, res, next) => {
     }
 }
 
-const restricted = (req, res, next) => {
-    const token = req.headers.authorization
-    if (!token) {
-        return next({ status: 401, message: 'token required' })
-    }
+// const restricted = (req, res, next) => {
+//     const token = req.headers.authorization
+//     if (!token) {
+//         return next({ status: 401, message: 'token required' })
+//     }
 
-    verify(token, JWT_SECRET, (err, decodedToken) => {
-        if (err) {
-            return next({
-                status: 401,
-                message: 'token invalid'
-            })
-        }
-        req.decodedToken = decodedToken
-        next()
-    })
-}
+//     verify(token, JWT_SECRET, (err, decodedToken) => {
+//         if (err) {
+//             return next({
+//                 status: 401,
+//                 message: 'token invalid'
+//             })
+//         }
+//         req.decodedToken = decodedToken
+//         next()
+//     })
+// }
 
 module.exports = {
     validateUniqueUser,
     checkBody,
     checkBodyPhoneNumber,
-    checkUsernameExists,
-    restricted
+    checkUsernameExists
 }

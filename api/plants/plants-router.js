@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
 const Plants = require('./plants-model');
-const restricted = require('../auth/auth-middleware');
+// const restricted = require('../auth/auth-middleware');
 
-router.get('/', restricted, (req, res, next) => {
+router.get('/', (req, res, next) => {
   Plants.getAll()
     .then(plants => {
       res.status(200).json(plants)
@@ -11,7 +11,7 @@ router.get('/', restricted, (req, res, next) => {
     .catch(next)
 });
 
-router.post('/', restricted, (req, res, next) => {
+router.post('/', (req, res, next) => {
   const plant = req.body;
   Plants.add(plant)
     .then(newPlant => {
