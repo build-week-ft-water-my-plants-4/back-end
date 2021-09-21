@@ -31,3 +31,11 @@ DO NOT USE THIS ENDPOINT, USE [POST] /auth/register INSTEAD!
 
 [DELETE] /api/users/:id - deletes the user of the specified id
 Safe to use. Does not reopen the id. The id of newly created users will skip the id numbers of deleted users.
+
+# dummy data
+Current users that you can use to test endpoints are:
+1. 'donkey kong'
+2. 'spiderman'
+3. 'xavier'
+The password for each of these users is 'green'
+PHONE NUMBERS SHOULD NOT BE NEEDED TO LOG IN
