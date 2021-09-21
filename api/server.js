@@ -12,6 +12,7 @@ server.use(cors())
 
 server.use('/api/users', usersRouter)
 server.use('/auth', authRouter)
+server.use('/api/plants', plantsRouter)
 
 server.get('/api', (req, res) => {
     res.json(`Welcome to the GARDEN OF EDEN server!`)
