@@ -17,6 +17,12 @@ The password will be stored as encrypted data
 The username must exist and the password must match
 Logging in will grant a token!
 
+# /api/plants
+
+[GET] /api/plants - gets all plants in the database
+
+[POST] /api/plants - create a new plant
+
 # /api/users
 
 [GET] /api/users - gets all users
