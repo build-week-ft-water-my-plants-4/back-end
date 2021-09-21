@@ -5,8 +5,7 @@ const server = express()
 
 const usersRouter = require('./users/users-router')
 const authRouter = require('./auth/auth-router')
-const plantsRouter = require('./plants/plants-router')
-const { restrict } = require('./auth/auth-middleware') // will likely be used for plants route
+// const { restrict } = require('./auth/auth-middleware') // will likely be used for plants route
 
 server.use(express.json())
 server.use(cors())
