@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Users = require('./users-model')
+const bcrypt = require('bcryptjs')
 
 const { checkId, checkBody } = require('./users-middleware')
 
@@ -30,7 +31,9 @@ router.post('/', checkBody, (req, res, next) => {
 
 router.put('/:id', checkId, checkBody, (req, res, next) => {
     const { id } = req.params
-    Users.editUser(id, req.body)
+    const { username, password, phone_number } = req.body
+    const hash = bcrypt.hashSync(password, 8)
+    Users.editUser(id, { username, password: hash, phone_number })
         .then(user => {
             res.status(200).json(user)
         })
