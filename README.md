@@ -4,11 +4,11 @@
 
 [POST] /auth/register - sign up to be a user
 
-The object posted must contain:
+The object's body must contain:
 
-1. A unique username
-2. A phone number (integer)
-3. A password
+1. username - A unique username
+2. phone_number - A phone number (integer)
+3. password - A password
 
 The password will be stored as encrypted data
 
