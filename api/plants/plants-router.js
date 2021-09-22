@@ -1,7 +1,6 @@
 const router = require('express').Router();
 
 const Plants = require('./plants-model');
-// const restricted = require('../auth/auth-middleware');
 
 router.get('/', (req, res, next) => {
   Plants.getAll()
